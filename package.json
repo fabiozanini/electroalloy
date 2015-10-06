@@ -12,6 +12,8 @@
     "type": "git",
     "url": "https://github.com/iosonofabio/electroalloy"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "electron-prebuilt": "^0.33.6"
   }
 }
