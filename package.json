@@ -1,0 +1,17 @@
+{
+  "name": "electroalloy",
+  "version": "0.0.1",
+  "description": "Trying to marry github electron with alloy editor.",
+  "author": "Fabio Zanini <fabio.zanini@fastmail.fm>",
+  "scripts": {
+    "start": "./node_modules/.bin/electron ."
+  },
+  "main": "build/electroalloy.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iosonofabio/electroalloy"
+  },
+  "dependencies": {
+  }
+}
