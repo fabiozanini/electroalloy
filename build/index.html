@@ -2,13 +2,61 @@
 <html>
   <head>
     <title>Hello World!</title>
-    <link href="../deps/alloy-editor-0.5.2/alloy-editor/assets/alloy-editor-ocean-min.css" rel="stylesheet">
+    <link href="../../alloy-editor/dist/alloy-editor/assets/alloy-editor-ocean-min.css" rel="stylesheet">
+    <style>
+        #mainConainer {
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+    </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using io.js <script>document.write(process.version)</script>
-    and Electron <script>document.write(process.versions['electron'])</script>.
+    <div id="mainConainer">
+      <h1>Hello World!</h1>
+      We are using io.js <script>document.write(process.version)</script>
+      and Electron <script>document.write(process.versions['electron'])</script>.
 
-   <script src="../deps/alloy-editor-0.5.2/alloy-editor/alloy-editor-all.js"></script> 
+      <div id="testreactdiv"></div>
+    </div>
+
+<script>
+  //CKEDITOR_BASEPATH = "../deps/ckeditor/";
+  //CKEDITOR_BASEPATH = "../node_modules/alloyeditor/dist/alloy-editor/";
+  ALLOYEDITOR_BASEPATH = "../../alloy-editor/dist/alloy-editor/";
+</script>
+<script src="../deps/ckeditor/ckeditor.js"></script>
+<script>
+var React = require('react');
+// this is the GIT version I forked
+var AlloyEditor = require('../../alloy-editor/dist/alloy-editor/alloy-editor-core.js');
+
+var AlloyEditorComponent = React.createClass({
+    componentDidMount: function() {
+        this._editor = AlloyEditor.editable(
+            React.findDOMNode(this.refs.myDiv),
+            {removePlugins: AlloyEditor.Core.ATTRS.removePlugins += ',tabletools'}
+        );
+    },
+
+    componentWillUnmount: function() {
+        this._editor.destroy();
+    },
+
+    render: function() {
+        return React.createElement('div', {
+            contentEditable: true,
+            id: 'myDiv',
+            ref: 'myDiv'
+          },
+          'My editable content'
+        );
+    }
+});
+
+React.render(
+  React.createElement(AlloyEditorComponent, null),
+  document.getElementById('testreactdiv')
+);
+</script>
   </body>
 </html>
